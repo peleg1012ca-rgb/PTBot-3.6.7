@@ -1,0 +1,25 @@
+PTBot 3.6.7 — validation (2026-09-27)
+
+Automated suite: 147 tests passed (Python 3.12 / Flask 3.1.3).
+Includes existing 128 tests plus 19 Recon tests.
+Coverage: scope/approval/CSRF/ownership; URL and port validation; IP exclusions;
+Nmap per-port rate reservations; partial results; CT candidate handling;
+HTTP pinning; no redirect following; gateway path and budget enforcement;
+repeatable migration; interrupted-run recovery; HTML escaping; JSON exports.
+
+Local end-to-end browser test: PASS.
+Created an approved test engagement and a loopback HTTP fixture. Launched Recon
+from the real form, watched polling finish, opened JSON and verified results.
+Nmap 7.94SVN: detected an open fixture port and closed TCP port 1.
+WhatWeb 0.5.5: detected HTTP server / WordPress / Python signatures.
+WhatWaf source 06c815ac541c9bba5c1a0f43ad8abfd44d6abcde:
+89 passive signatures loaded, zero plugin errors, Cloudflare fixture identified.
+Cookie secret was absent from stored/exported results.
+Desktop 1440px and mobile 390px: screenshots inspected; no horizontal overflow
+of the document, no browser JavaScript errors. Wide tables scroll internally.
+
+Shell scripts: bash -n passed.
+No external target was scanned. Live crt.sh availability and public DNS/TLS
+provider behavior were not end-to-end tested in this environment.
+Optional executables and signatures are installed on the user's Kali machine
+using install-recon.sh; third-party binary packages are not bundled.

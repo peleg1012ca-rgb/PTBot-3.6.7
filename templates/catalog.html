@@ -1,0 +1,17 @@
+{% extends 'base.html' %}{% block body %}<div class="eyebrow">Capability catalog</div><h1>Know what each tool does.</h1><p class="muted">A focused set of repeatable checks with scope, audit records and human review.</p><div class="card"><table><tr><th>Capability</th><th>Execution</th><th>Evidence and limits</th></tr>{% for name,mode,detail in [
+('Reflected XSS','Active + isolated replay','One page, up to 4 GET parameters and 17 requests. Unique alert probes, evidence hashes and optional Chromium verification. No stored/DOM coverage.'),
+('HTTP GET / HEAD / OPTIONS','Active, authorized','One URL, no redirects or credentials, bounded response; policy and budget enforced.'),
+('DNS lookup','Active, authorized','Resolve one approved domain. Newly discovered IPs do not expand scope.'),
+('TLS certificate','Active, authorized','Verified handshake, hostname and trust chain; certificate expiry.'),
+('Selected TCP ports','Active, authorized','1–8 explicit ports; one budget unit per connection; no service exploitation.'),
+('Headers / cookies / CORS','Offline analysis','Inspect the captured response; no additional requests.'),
+('Forms / links / error signatures','Offline analysis','Identify review candidates. No crawling or exploit confirmation.'),
+('Burp Suite captures','Offline import','Save items XML; up to 50 in-scope responses. Raw content is discarded.'),
+('Website Recon','Active + passive','DNS, HTTP, TLS, CT names and a persistent dashboard; per-module permission and coverage.'),
+('Nmap TCP scan','Active, authorized','Up to 16 selected ports on one resolved IP; numeric target, no host discovery, one reservation per port.'),
+('WhatWeb','Level 1','Single target through a pinned HTTP gateway; no redirects. Technology signatures need validation.'),
+('WhatWaf signatures','Offline analysis','Runs installed WhatWaf detection signatures against the captured response. No bypass checks.'),
+('Subdomain discovery','Public CT lookup','One crt.sh query. Candidate names are not automatically contacted or added to scope.'),
+('Nmap XML import','Offline import','Import existing open-port evidence.'),
+('Repeater variants','Unsent plans','GET, HEAD, OPTIONS, Accept and Origin variants; harmless markers for manual review.'),
+('Review and reporting','Local workflow','Decision, note and history; print/PDF and JSON export.') ] %}<tr><td>{{ name }}</td><td><span class="badge">{{ mode }}</span></td><td>{{ detail }}</td></tr>{% endfor %}</table></div><div class="notice">This release uses deterministic checks. It does not contain an autonomous AI exploitation agent or claim full OWASP coverage.</div>{% endblock %}

@@ -1,0 +1,12 @@
+חיבור מנתחים לא מקוונים לריצות החקירה
+
+התקנה ב-Kali (עצור קודם את app.py עם Ctrl+C):
+cd /home/peleg/AI-PT-Agent
+mkdir -p ~/Downloads/ai-pt-before-passive
+cp -n local_http.py investigation_store.py engagements_ui.py ~/Downloads/ai-pt-before-passive/
+unzip -o ~/Downloads/ai-pt-passive-integration.zip -d .
+.venv/bin/python -m unittest discover -s tests -v
+
+אחר כך: הפעל את app.py מחדש; פתח /engagements/2; הרץ GET יחיד למעבדה המקומית והסתכל באזור Review observations. אם עדיין נחסמת עקב מגבלת הקצב, המתן לחלון של 60 שניות. התוצאות הקודמות לא יעובדו מחדש; ניתוח מתבצע רק על תגובה חדשה. אין בקשת רשת נוספת או שינוי בסכמת SQLite.
+
+הקוד מחלץ מתוך תגובת ה-GET בלבד סימנים קבועים: כותרות, טפסים, cookies, CORS, שגיאות, רשימות קבצים, חתימת מפתח, banner וקישורים. אין ביקור בקישורים שנמצאו. ערכי כותרות, תוכן גוף התגובה וקישורים אינם נשמרים במסד; התצוגה הזמנית הקיימת של התגובה נשארת כבעבר. התוצאות הן unreviewed ודורשות סקירה אנושית.

@@ -1,0 +1,84 @@
+{
+  "mode": "offline",
+  "network_requests_sent": 0,
+  "captures": [
+    {
+      "url": "https://example.test/?q=%5Bredacted%5D",
+      "method": "GET",
+      "status": 200,
+      "body_sha256": "98e8590a2a266e4a99ab329a7cc7b0af1c23b79622f32af75b4704ad115433a1",
+      "body_hash_scope": "decoded retained text, not original wire bytes",
+      "findings": [
+        {
+          "check": "headers",
+          "severity": "info",
+          "detail": "Missing content-security-policy header"
+        },
+        {
+          "check": "headers",
+          "severity": "info",
+          "detail": "Missing x-content-type-options header"
+        },
+        {
+          "check": "headers",
+          "severity": "info",
+          "detail": "Missing referrer-policy header"
+        },
+        {
+          "check": "headers",
+          "severity": "info",
+          "detail": "Missing HSTS header"
+        },
+        {
+          "check": "cookies",
+          "severity": "info",
+          "detail": "Cookie missing HttpOnly, SameSite, Secure"
+        },
+        {
+          "check": "forms",
+          "severity": "info",
+          "detail": "Form uses GET; review submitted data"
+        },
+        {
+          "check": "mixed_content",
+          "severity": "medium",
+          "detail": "HTTPS page references HTTP resource"
+        },
+        {
+          "check": "reflection",
+          "severity": "info",
+          "detail": "Marker reflected in HTML; review context manually"
+        },
+        {
+          "check": "fingerprint",
+          "severity": "info",
+          "detail": "Technology banner present; inspect captured headers locally"
+        }
+      ],
+      "recon": {
+        "source": "https://example.test/?q=%5Bredacted%5D",
+        "linked_hosts": [
+          "example.test"
+        ],
+        "endpoints": [
+          "http://example.test/app.js",
+          "https://example.test/help"
+        ],
+        "forms": [
+          {
+            "method": "GET",
+            "action": "https://example.test/search"
+          }
+        ],
+        "field_names": [
+          "q"
+        ],
+        "query_parameter_names": [
+          "q"
+        ],
+        "script_reference_count": 1,
+        "discovered_urls_are_authorized": false
+      }
+    }
+  ]
+}

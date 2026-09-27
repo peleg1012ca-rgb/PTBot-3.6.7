@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{% block title %}PTBot 3.6.7 · Security workspace{% endblock %}</title><link rel="icon" href="/static/ptbot.svg" type="image/svg+xml"><link rel="stylesheet" href="/static/workbench.css"><script src="/static/workbench.js" defer></script></head>
+<body>
+<aside class="sidebar no-print">
+<a class="brand" href="/"><img src="/static/ptbot.svg" width="38" height="38" alt=""><span>PTBot<small>SECURITY WORKSPACE</small></span></a>
+<div class="nav-label">WORKSPACE</div>
+<nav class="side-nav" aria-label="Main navigation">
+<a href="/" class="{{ 'active' if request.path == '/' }}"><span>◫</span>Overview</a>
+<a href="/engagements/" class="{{ 'active' if request.path.startswith('/engagements') or request.path.startswith('/workbench') }}"><span>◎</span>Engagements</a>
+<a href="/assessments" class="{{ 'active' if (request.path.startswith('/xss') or request.path.startswith('/assessments')) }}"><span>⌘</span>Assessments<span class="nav-new">NEW</span></a>
+<a href="/catalog" class="{{ 'active' if request.path == '/catalog' }}"><span>▦</span>Tool catalog</a>
+</nav>
+<div class="sidebar-note"><span class="status-dot"></span> Local workspace<p>Scope. Evidence. Clarity.</p><span class="version">VERSION 3.6.7</span></div>
+<div class="operator"><span class="avatar">{{ (session.get('operator', 'PE'))[:2]|upper }}</span><div>{{ session.get('operator', 'Local operator') }}<small>Personal workspace</small></div>{% if operator_enabled %}<form method="post" action="/logout"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><button class="icon-button" aria-label="Sign out" title="Sign out">↗</button></form>{% endif %}</div>
+</aside>
+<div class="app-main">
+<header class="topbar no-print"><div class="breadcrumb">Workspace <span>/</span> {{ 'Overview' if request.path=='/' else 'Assessments' if (request.path.startswith('/xss') or request.path.startswith('/assessments')) else 'Tool catalog' if request.path=='/catalog' else 'Assessment' }}</div><div class="row"><span class="local-pill"><span class="status-dot"></span> Local data</span><a class="top-action" href="/engagements/new">+ New engagement</a></div></header>
+<main class="shell">{% block body %}{% endblock %}<footer class="footer"><span>PTBot <strong>3.6.7</strong> · Built by Peleg Elbaz</span><span>Evidence-led security testing</span></footer></main>
+</div></body></html>

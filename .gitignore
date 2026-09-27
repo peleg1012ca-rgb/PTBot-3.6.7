@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.db
+*.db-*
+*.sqlite*
+*.bak*
+instance/
+.env*
+reports/
+captures/
+*.zip
+.pytest_cache/
+
+tools/

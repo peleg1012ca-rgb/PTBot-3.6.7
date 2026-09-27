@@ -1,0 +1,78 @@
+{
+  "notes": [
+    "Original query values and credentials are not carried over.",
+    "Each query variant contains only one parameter; this can alter application behavior.",
+    "These are request plans, not scan results. Verify scope and rate limits before manual sending.",
+    "HTML marker contains no script; reflection alone does not establish XSS."
+  ],
+  "variants": [
+    {
+      "name": "baseline",
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/",
+      "headers": {},
+      "authorization_required_before_sending": true,
+      "sent": false
+    },
+    {
+      "name": "head",
+      "method": "HEAD",
+      "url": "http://127.0.0.1:8000/",
+      "headers": {},
+      "authorization_required_before_sending": true,
+      "sent": false
+    },
+    {
+      "name": "options",
+      "method": "OPTIONS",
+      "url": "http://127.0.0.1:8000/",
+      "headers": {},
+      "authorization_required_before_sending": true,
+      "sent": false
+    },
+    {
+      "name": "accept_json",
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/",
+      "headers": {
+        "Accept": "application/json"
+      },
+      "authorization_required_before_sending": true,
+      "sent": false
+    },
+    {
+      "name": "origin_review",
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/",
+      "headers": {
+        "Origin": "https://example.invalid"
+      },
+      "authorization_required_before_sending": true,
+      "sent": false
+    },
+    {
+      "name": "marker",
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/?q=PT_MARKER_2026",
+      "headers": {},
+      "authorization_required_before_sending": true,
+      "sent": false
+    },
+    {
+      "name": "empty",
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/?q=",
+      "headers": {},
+      "authorization_required_before_sending": true,
+      "sent": false
+    },
+    {
+      "name": "html_marker",
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/?q=%3Cspan+data-pt%3D%22PT_MARKER_2026%22%3EPT%3C%2Fspan%3E",
+      "headers": {},
+      "authorization_required_before_sending": true,
+      "sent": false
+    }
+  ]
+}
